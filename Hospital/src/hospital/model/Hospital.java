@@ -1,4 +1,4 @@
-package hospital.service;
+package hospital.model;
 
 
 

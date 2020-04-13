@@ -1,4 +1,4 @@
-package hospital.model;
+package hospital.service;
 
 public class HospitalService {
 
