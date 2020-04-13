@@ -77,7 +77,7 @@ public class Doctor {
 			
 			// Prepare the html table to be displayed
 			output = "<table border=\"1\">"
-					+ "<tr><th>Item Code</th>"
+					+ "<tr><th>DoctorID</th>"
 					+ "<th>Item Name</th>"
 					+ "<th>ItemPrice</th>"
 					+ "<th>ItemDescription</th>"
