@@ -29,4 +29,12 @@ public class DoctorService {
 		String output = doc.insertDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;
 	}
+	
+	@GET
+	@Path("/")
+	@Produces(MediaType.TEXT_HTML)
+	public String readDoctors()
+	{
+		return doc.readDoctors();
+	}
 }
