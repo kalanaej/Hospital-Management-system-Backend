@@ -31,5 +31,24 @@ Hospital hosObj = new Hospital();
 	}
 	
 	
+	@POST 
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String insertHoapitalDet(
+			@FormParam("mohCode") String mohCode,       
+			@FormParam("hospitalName") String hospitalName,    
+			@FormParam("emailAddress") String emailAddress,       
+			@FormParam("managerName") String managerName,
+			@FormParam("address") String address,
+			@FormParam("telephoneNo") String telephoneNo)
+	{  
+		String output = hosObj.insertHoapitalDet(mohCode, hospitalName, emailAddress, managerName,address,telephoneNo);  
+		return output; 
+		
+	} 
+	
+
+	
 
 }
