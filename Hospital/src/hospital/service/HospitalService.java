@@ -73,6 +73,24 @@ Hospital hosObj = new Hospital();
 		 
 		 } 
 		 
+	@DELETE 
+	@Path("/") 
+	@Consumes(MediaType.APPLICATION_XML) 
+	@Produces(MediaType.TEXT_PLAIN) 
+	
+	public String deleteHospitalDet(String hospitalData) 
+	{  
+		//Convert the input string to an XML document  
+		Document doc = Jsoup.parse(hospitalData, "", Parser.xmlParser());     
+		
+		//Read the value from the element <itemID>  
+		String hospitalID = doc.select("hospitalID").text(); 
+		 
+		 String output = hosObj.deleteHospitalDet(hospitalID); 
+		 
+		 return output; 
+		 
+	} 
 	
 
 }
