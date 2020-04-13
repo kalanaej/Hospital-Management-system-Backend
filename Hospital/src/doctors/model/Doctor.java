@@ -77,10 +77,13 @@ public class Doctor {
 			
 			// Prepare the html table to be displayed
 			output = "<table border=\"1\">"
-					+ "<tr><th>DoctorID</th>"
-					+ "<th>Item Name</th>"
-					+ "<th>ItemPrice</th>"
-					+ "<th>ItemDescription</th>"
+					+ "<tr><th>Doctor ID</th>"
+					+ "<th>Hospital Name</th>"
+					+ "<th>Doctor Name</th>"
+					+ "<th>Age</th>"
+					+ "<th>Specialization</th>"
+					+ "<th>ArriveTime</th>"
+					+ "<th>LeaveTime</th>"
 					+ "<th>Update</th>"
 					+ "<th>Remove</th></tr>";
 			
@@ -113,7 +116,7 @@ public class Doctor {
 				output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btn btn-secondary\"></td>"
 				+ "<td><form method=\"post\" action=\"items.jsp\">"
 				+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
-				+ "<input name=\"itemID\" type=\"hidden\" value=\"" + ID + "\">" 
+				+ "<input name=\"ID\" type=\"hidden\" value=\"" + ID + "\">" 
 				+ "</form></td></tr>";
 			}
 			
@@ -124,7 +127,96 @@ public class Doctor {
 		}
 		catch (Exception e)
 		{
-			output = "Error while reading the items.";
+			output = "Error while reading the doctor.";
+			System.err.println(e.getMessage());
+		}
+		
+		return output;
+	}
+	
+	public String updateDoctor(String ID, String docID, String hospitalName, String docName, int age, String spec, String arrive, String leave)
+	{
+		String output = "";
+		
+		try
+		{
+			DBConnect db = new DBConnect();
+			Connection con = null;
+			con = db.connect();
+			
+			if (con == null)
+			{
+				return "Error while connecting to the database for updating.";
+			}
+			
+			String query1 = "select Name from hospital_tbl";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query1);
+			
+			if(rs.next()){
+				hospitalName = rs.getString("Name");
+			}
+			
+			// create a prepared statement
+			String query = "UPDATE doctors SET DoctorID = ?, HospitalName = ?, DoctorName = ? , Age = ?, Specialization = ?, ArriveTime = ?, LeaveTime = ? WHERE ID=?";
+			
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			// binding values
+			preparedStmt.setString(1, docID);
+			preparedStmt.setString(2, hospitalName);
+			preparedStmt.setString(3, docName);
+			preparedStmt.setInt(4, age);
+			preparedStmt.setString(5, spec);
+			preparedStmt.setString(6, arrive);
+			preparedStmt.setString(7, leave);
+			preparedStmt.setInt(8, Integer.parseInt(ID));
+			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Updated successfully";
+		}
+		catch (Exception e)
+		{
+			output = "Error while updating the doctor.";
+			System.err.println(e.getMessage());
+		}
+		
+		return output;
+	}
+	
+	public String deleteDoctor(String ID)
+	{
+		String output = "";
+		try
+		{
+			DBConnect db = new DBConnect();
+			Connection con = null;
+			con = db.connect();
+			
+			if (con == null)
+			{
+				return "Error while connecting to the database for deleting."; 
+			}
+			
+			// create a prepared statement
+			String query = "delete from doctors where ID=?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			// binding values
+			preparedStmt.setInt(1, Integer.parseInt(ID));
+			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Deleted successfully";
+		}
+		catch (Exception e)
+		{
+			output = "Error while deleting the doctor.";
 			System.err.println(e.getMessage());
 		}
 		
