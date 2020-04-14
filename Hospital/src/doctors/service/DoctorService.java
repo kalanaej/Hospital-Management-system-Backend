@@ -24,7 +24,13 @@ public class DoctorService {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 	
-	public String insertDoctor(@FormParam("DoctorID") String DoctorID, @FormParam("HospitalName") String HospitalName, @FormParam("DoctorName") String DoctorName, @FormParam("Age") int Age, @FormParam("Specialization") String Specialization, @FormParam("ArriveTime") String ArriveTime, @FormParam("LeaveTime") String LeaveTime)
+	public String insertDoctor(@FormParam("DoctorID") String DoctorID, 
+							   @FormParam("HospitalName") String HospitalName, 
+							   @FormParam("DoctorName") String DoctorName, 
+							   @FormParam("Age") int Age, 
+							   @FormParam("Specialization") String Specialization, 
+							   @FormParam("ArriveTime") String ArriveTime, 
+							   @FormParam("LeaveTime") String LeaveTime)
 	{
 		String output = doc.insertDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;

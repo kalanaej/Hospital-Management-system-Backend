@@ -52,7 +52,6 @@ public class Doctor {
 		catch (Exception e)
 		{
 			output = "Error while inserting the doctor.";
-			System.out.println(e);
 			System.err.println(e.getMessage());
 		}
 		
