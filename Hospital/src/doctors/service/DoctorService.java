@@ -64,7 +64,7 @@ public class DoctorService {
 		
 		String output = doc.updateDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;
-	}
+	}	
 	
 	@DELETE
 	@Path("/")

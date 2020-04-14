@@ -21,7 +21,7 @@ public class Doctor {
 				return "Error while connecting to the database for inserting."; 
 			}
 			
-			String query1 = "select Name from hospital_tbl";
+			String query1 = "select hospitalName from hospital";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query1);
 			
@@ -57,6 +57,8 @@ public class Doctor {
 		
 		return output;
 	}
+	
+	
 	
 	public String readDoctors()
 	{
@@ -131,6 +133,8 @@ public class Doctor {
 		return output;
 	}
 	
+	
+	
 	public String updateDoctor(String docID, String hospitalName, String docName, int age, String spec, String arrive, String leave)
 	{
 		String output = "";
@@ -182,6 +186,8 @@ public class Doctor {
 		
 		return output;
 	}
+	
+	
 	
 	public String deleteDoctor(String docID)
 	{
