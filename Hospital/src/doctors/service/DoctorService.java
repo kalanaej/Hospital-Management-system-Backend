@@ -48,7 +48,6 @@ public class DoctorService {
 		JsonObject obj = new JsonParser().parse(doctorData).getAsJsonObject();
 		
 		//Read the values from the JSON object
-		//String ID = obj.get("ID").getAsString();
 		String DoctorID = obj.get("DoctorID").getAsString();
 		String HospitalName = obj.get("HospitalName").getAsString();
 		String DoctorName = obj.get("DoctorName").getAsString();

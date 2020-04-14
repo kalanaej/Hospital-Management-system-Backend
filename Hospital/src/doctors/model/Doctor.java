@@ -35,7 +35,6 @@ public class Doctor {
 			
 			
 			// binding values
-			//preparedStmt.setInt(1, 0);
 			preparedStmt.setString(1, docID);
 			preparedStmt.setString(2, hospitalName);
 			preparedStmt.setString(3, docName);
@@ -94,7 +93,6 @@ public class Doctor {
 			
 			while (rs.next())
 			{
-				//String ID = Integer.toString(rs.getInt("ID"));
 				String docID = rs.getString("DoctorID");
 				String hospitalName = rs.getString("HospitalName");
 				String docName = rs.getString("DoctorName");
@@ -170,7 +168,6 @@ public class Doctor {
 			preparedStmt.setString(5, arrive);
 			preparedStmt.setString(6, leave);
 			preparedStmt.setString(7, docID);
-			//preparedStmt.setInt(8, Integer.parseInt(ID));
 			
 			// execute the statement
 			preparedStmt.execute();
