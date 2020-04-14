@@ -30,19 +30,19 @@ public class Doctor {
 			}
 			
 			// create a prepared statement
-			String query = " insert into doctors(`ID`, `DoctorID`, `HospitalName`, `DoctorName`, `Age`, `Specialization`, `ArriveTime`, `LeaveTime`)"+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = " insert into doctors(`DoctorID`, `HospitalName`, `DoctorName`, `Age`, `Specialization`, `ArriveTime`, `LeaveTime`)"+ " values (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 			
 			// binding values
-			preparedStmt.setInt(1, 0);
-			preparedStmt.setString(2, docID);
-			preparedStmt.setString(3, hospitalName);
-			preparedStmt.setString(4, docName);
-			preparedStmt.setInt(5, age);
-			preparedStmt.setString(6, spec);
-			preparedStmt.setString(7, arrive);
-			preparedStmt.setString(8, leave);
+			//preparedStmt.setInt(1, 0);
+			preparedStmt.setString(1, docID);
+			preparedStmt.setString(2, hospitalName);
+			preparedStmt.setString(3, docName);
+			preparedStmt.setInt(4, age);
+			preparedStmt.setString(5, spec);
+			preparedStmt.setString(6, arrive);
+			preparedStmt.setString(7, leave);
 			
 	
 			// execute the statement
@@ -94,7 +94,7 @@ public class Doctor {
 			
 			while (rs.next())
 			{
-				String ID = Integer.toString(rs.getInt("ID"));
+				//String ID = Integer.toString(rs.getInt("ID"));
 				String docID = rs.getString("DoctorID");
 				String hospitalName = rs.getString("HospitalName");
 				String docName = rs.getString("DoctorName");
@@ -116,7 +116,7 @@ public class Doctor {
 				output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btn btn-secondary\"></td>"
 				+ "<td><form method=\"post\" action=\"items.jsp\">"
 				+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
-				+ "<input name=\"ID\" type=\"hidden\" value=\"" + ID + "\">" 
+				+ "<input name=\"ID\" type=\"hidden\" value=\"" + docID + "\">" 
 				+ "</form></td></tr>";
 			}
 			
@@ -134,7 +134,7 @@ public class Doctor {
 		return output;
 	}
 	
-	public String updateDoctor(String ID, String docID, String hospitalName, String docName, int age, String spec, String arrive, String leave)
+	public String updateDoctor(String docID, String hospitalName, String docName, int age, String spec, String arrive, String leave)
 	{
 		String output = "";
 		
@@ -158,19 +158,19 @@ public class Doctor {
 			}
 			
 			// create a prepared statement
-			String query = "UPDATE doctors SET DoctorID = ?, HospitalName = ?, DoctorName = ? , Age = ?, Specialization = ?, ArriveTime = ?, LeaveTime = ? WHERE ID=?";
+			String query = "UPDATE doctors SET HospitalName = ?, DoctorName = ? , Age = ?, Specialization = ?, ArriveTime = ?, LeaveTime = ? WHERE DoctorID = ?";
 			
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 			// binding values
-			preparedStmt.setString(1, docID);
-			preparedStmt.setString(2, hospitalName);
-			preparedStmt.setString(3, docName);
-			preparedStmt.setInt(4, age);
-			preparedStmt.setString(5, spec);
-			preparedStmt.setString(6, arrive);
-			preparedStmt.setString(7, leave);
-			preparedStmt.setInt(8, Integer.parseInt(ID));
+			preparedStmt.setString(1, hospitalName);
+			preparedStmt.setString(2, docName);
+			preparedStmt.setInt(3, age);
+			preparedStmt.setString(4, spec);
+			preparedStmt.setString(5, arrive);
+			preparedStmt.setString(6, leave);
+			preparedStmt.setString(7, docID);
+			//preparedStmt.setInt(8, Integer.parseInt(ID));
 			
 			// execute the statement
 			preparedStmt.execute();
@@ -187,7 +187,7 @@ public class Doctor {
 		return output;
 	}
 	
-	public String deleteDoctor(String ID)
+	public String deleteDoctor(String docID)
 	{
 		String output = "";
 		try
@@ -202,11 +202,11 @@ public class Doctor {
 			}
 			
 			// create a prepared statement
-			String query = "delete from doctors where ID=?";
+			String query = "delete from doctors where DoctorID = ?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 			// binding values
-			preparedStmt.setInt(1, Integer.parseInt(ID));
+			preparedStmt.setString(1, docID);
 			
 			// execute the statement
 			preparedStmt.execute();

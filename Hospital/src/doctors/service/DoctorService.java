@@ -48,7 +48,7 @@ public class DoctorService {
 		JsonObject obj = new JsonParser().parse(doctorData).getAsJsonObject();
 		
 		//Read the values from the JSON object
-		String ID = obj.get("ID").getAsString();
+		//String ID = obj.get("ID").getAsString();
 		String DoctorID = obj.get("DoctorID").getAsString();
 		String HospitalName = obj.get("HospitalName").getAsString();
 		String DoctorName = obj.get("DoctorName").getAsString();
@@ -57,7 +57,7 @@ public class DoctorService {
 		String ArriveTime = obj.get("ArriveTime").getAsString();
 		String LeaveTime = obj.get("LeaveTime").getAsString();
 		
-		String output = doc.updateDoctor(ID, DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
+		String output = doc.updateDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;
 	}
 	
@@ -71,9 +71,9 @@ public class DoctorService {
 		Document document = Jsoup.parse(doctorData, "", Parser.xmlParser());
 		
 		//Read the value from the element <itemID>
-		String ID = document.select("ID").text();
+		String DoctorID = document.select("DoctorID").text();
 		
-		String output = doc.deleteDoctor(ID);
+		String output = doc.deleteDoctor(DoctorID);
 		return output;
 	}
 }
