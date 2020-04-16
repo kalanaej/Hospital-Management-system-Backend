@@ -26,7 +26,7 @@ public class Doctor {
 			ResultSet rs = stmt.executeQuery(query1);
 			
 			if(rs.next()){
-				hospitalName = rs.getString("Name");
+				hospitalName = rs.getString("hospitalName");
 			}
 			
 			// create a prepared statement
@@ -34,14 +34,26 @@ public class Doctor {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 			
-			// binding values
+				
+				// binding values
 			preparedStmt.setString(1, docID);
 			preparedStmt.setString(2, hospitalName);
 			preparedStmt.setString(3, docName);
-			preparedStmt.setInt(4, age);
+				
+				
+			if(age > 25 && age < 70) 
+			{
+				preparedStmt.setInt(4, age);
+			}
+			else
+			{
+				System.out.println("Age is not valid");
+			}
+				
 			preparedStmt.setString(5, spec);
 			preparedStmt.setString(6, arrive);
 			preparedStmt.setString(7, leave);
+			
 			
 	
 			// execute the statement
