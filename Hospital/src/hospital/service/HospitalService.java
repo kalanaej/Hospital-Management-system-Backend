@@ -18,7 +18,7 @@ import org.jsoup.nodes.Document;
 public class HospitalService {
 	
 	
-Hospital hosObj = new Hospital();
+	Hospital hosObj = new Hospital();
 	
 	
 	@GET  
@@ -58,7 +58,7 @@ Hospital hosObj = new Hospital();
 		//Convert the input string to a JSON object  
 		JsonObject hospitalObject = new JsonParser().parse(hospitalData).getAsJsonObject(); 
 		 
-		 //Read the values from the JSON object  
+		//Read the values from the JSON object  
 		String hospitalID = hospitalObject.get("hospitalID").getAsString(); 
 		String mohCode = hospitalObject.get("mohCode").getAsString();  
 		String hospitalName = hospitalObject.get("hospitalName").getAsString(); 
@@ -69,9 +69,9 @@ Hospital hosObj = new Hospital();
 		 
 		String output = hosObj.updateHospitalDet(hospitalID, mohCode, hospitalName, emailAddress, managerName,address,telephoneNo); 
 		 
-		 return output; 
+		return output; 
 		 
-		 } 
+	} 
 		 
 	@DELETE 
 	@Path("/") 
@@ -86,11 +86,8 @@ Hospital hosObj = new Hospital();
 		//Read the value from the element <itemID>  
 		String hospitalID = doc.select("hospitalID").text(); 
 		 
-		 String output = hosObj.deleteHospitalDet(hospitalID); 
+		String output = hosObj.deleteHospitalDet(hospitalID); 
 		 
-		 return output; 
-		 
+		return output;  
 	} 
-	
-
 }
