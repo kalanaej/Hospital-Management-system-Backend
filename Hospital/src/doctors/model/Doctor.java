@@ -49,7 +49,7 @@ public class Doctor {
 		}
 		catch (Exception e)
 		{
-			output = "Error while inserting the doctor.";
+			output = "Error while inserting a doctor.";
 			System.err.println(e.getMessage());
 		}
 		
@@ -124,7 +124,7 @@ public class Doctor {
 		}
 		catch (Exception e)
 		{
-			output = "Error while reading the doctor.";
+			output = "Error while reading doctors.";
 			System.err.println(e.getMessage());
 		}
 		
