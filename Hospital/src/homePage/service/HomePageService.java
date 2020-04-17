@@ -4,15 +4,7 @@ package homePage.service;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-//For JSON
-import com.google.gson.*;
-
 import homePage.model.HomePage;
-
-//For XML
-import org.jsoup.*;
-import org.jsoup.parser.*;
-import org.jsoup.nodes.Document;
 
 @Path("HomePage")
 public class HomePageService {

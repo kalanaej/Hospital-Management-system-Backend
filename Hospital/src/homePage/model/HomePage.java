@@ -107,8 +107,7 @@ public class HomePage {
 		
 		   // iterate through the rows in the result set   
 		   while (rs.next())    
-		   {    
-			   	String hospitalID = Integer.toString(rs.getInt("hospitalID"));     
+		   {        
 			   	String MohCode = rs.getString("mohCode");     
 			   	String hosName = rs.getString("hospitalName");     
 			   	String emailAdd = rs.getString("emailAddress");  
