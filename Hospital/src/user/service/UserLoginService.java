@@ -1,7 +1,5 @@
 package user.service;
 
-import java.sql.SQLException;
-
 //For REST Service
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -9,7 +7,6 @@ import javax.ws.rs.core.MediaType;
 //For JSON
 import com.google.gson.*;
 
-import doctors.model.Doctor;
 import user.model.UserLogin;
 
 //For XML
