@@ -6,7 +6,7 @@ import javax.ws.rs.core.MediaType;
 
 import user.model.UserRegister;
 
-@Path("User")
+@Path("Register")
 public class UserRegisterService {
 
 	UserRegister user = new UserRegister();

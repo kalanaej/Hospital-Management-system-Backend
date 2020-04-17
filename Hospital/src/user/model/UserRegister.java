@@ -6,7 +6,7 @@ import dbconnector.DBConnect;
 
 public class UserRegister {
 
-	public String insertUser(String email, String name, String password, int age, String address, int phoneNo)
+	public String insertUser(String email, String username, String password, int age, String address, int phoneNo)
 	{
 		String output = "";
 		
@@ -30,7 +30,7 @@ public class UserRegister {
 			// binding values
 			preparedStmt.setInt(1, 0);
 			preparedStmt.setString(2, email);
-			preparedStmt.setString(3, name);
+			preparedStmt.setString(3, username);
 			preparedStmt.setString(4, password);
 			preparedStmt.setInt(5, age);
 			preparedStmt.setString(6, address);
