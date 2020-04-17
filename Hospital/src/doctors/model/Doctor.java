@@ -33,29 +33,15 @@ public class Doctor {
 			String query = " insert into doctors(`DoctorID`, `HospitalName`, `DoctorName`, `Age`, `Specialization`, `ArriveTime`, `LeaveTime`)"+ " values (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
-			
-				
-				// binding values
+			// binding values
 			preparedStmt.setString(1, docID);
 			preparedStmt.setString(2, hospitalName);
 			preparedStmt.setString(3, docName);
-				
-				
-			//if(age > 25 && age < 70) 
-			//{
-				preparedStmt.setInt(4, age);
-			//}
-			//else
-			//{
-				//System.out.println("Age is not valid");
-			//}
-				
+			preparedStmt.setInt(4, age);
 			preparedStmt.setString(5, spec);
 			preparedStmt.setString(6, arrive);
 			preparedStmt.setString(7, leave);
 			
-			
-	
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
