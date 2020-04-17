@@ -117,7 +117,8 @@ public class Hospital {
 			   			+ "<td><form method=\"post\" action=\"hospital.jsp\">"      
 			   			+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"      class=\"btn btn-danger\">"     
 			   			+ "<input name=\"hospitalID\" type=\"hidden\" value=\"" + hospitalID      + "\">" 
-			   			+ "</form></td></tr>";    } 
+			   			+ "</form></td></tr>";    
+			   	} 
 		 
 		   		con.close(); 
 		 
