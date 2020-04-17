@@ -52,9 +52,6 @@ public class UserLogin {
 	{
 		String output = "";
 		
-//		String userName = "kalanaej"; 
-//		String password = "kalana123";
-		
 		try
 		{
 			DBConnect db = new DBConnect();
