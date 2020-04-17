@@ -41,14 +41,14 @@ public class Doctor {
 			preparedStmt.setString(3, docName);
 				
 				
-			if(age > 25 && age < 70) 
-			{
+			//if(age > 25 && age < 70) 
+			//{
 				preparedStmt.setInt(4, age);
-			}
-			else
-			{
-				System.out.println("Age is not valid");
-			}
+			//}
+			//else
+			//{
+				//System.out.println("Age is not valid");
+			//}
 				
 			preparedStmt.setString(5, spec);
 			preparedStmt.setString(6, arrive);
@@ -162,12 +162,12 @@ public class Doctor {
 				return "Error while connecting to the database for updating.";
 			}
 			
-			String query1 = "select Name from hospital_tbl";
+			String query1 = "select HospitalName from hospital";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query1);
 			
 			if(rs.next()){
-				hospitalName = rs.getString("Name");
+				hospitalName = rs.getString("HospitalName");
 			}
 			
 			// create a prepared statement

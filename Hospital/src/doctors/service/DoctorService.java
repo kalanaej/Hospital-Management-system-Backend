@@ -32,6 +32,14 @@ public class DoctorService {
 							   @FormParam("ArriveTime") String ArriveTime, 
 							   @FormParam("LeaveTime") String LeaveTime)
 	{
+		if(Age < 25 || Age > 70) 
+		{
+			return "Age is wrong";
+		}
+		else if(DoctorName.isEmpty() || Specialization.isEmpty() || ArriveTime.isEmpty() || LeaveTime.isEmpty()) 
+		{
+			return "Fields cannot be empty";
+		}
 		String output = doc.insertDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;
 	}
@@ -61,6 +69,15 @@ public class DoctorService {
 		String Specialization = obj.get("Specialization").getAsString();
 		String ArriveTime = obj.get("ArriveTime").getAsString();
 		String LeaveTime = obj.get("LeaveTime").getAsString();
+		
+		if(Age < 25 || Age > 70) 
+		{
+			return "Age is wrong";
+		}
+		else if(DoctorName.isEmpty() || Specialization.isEmpty() || ArriveTime.isEmpty() || LeaveTime.isEmpty()) 
+		{
+			return "Fields cannot be empty";
+		}
 		
 		String output = doc.updateDoctor(DoctorID, HospitalName, DoctorName, Age, Specialization, ArriveTime, LeaveTime);
 		return output;

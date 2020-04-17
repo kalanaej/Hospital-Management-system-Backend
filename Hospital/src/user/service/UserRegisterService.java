@@ -23,6 +23,16 @@ public class UserRegisterService {
 							 @FormParam("Address") String Address, 
 							 @FormParam("PhoneNumber") int PhoneNumber)
 	{
+		
+		if(Age < 10 || Age > 90) 
+		{
+			return "Age is wrong";
+		}
+		else if(Email.isEmpty() || Username.isEmpty() || Password.isEmpty() || Address.isEmpty()) 
+		{
+			return "Fields cannot be empty";
+		}
+		
 		String output = user.insertUser(Email, Username, Password, Age, Address, PhoneNumber);
 		return output;
 	}
