@@ -70,7 +70,7 @@ public class DoctorService {
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String deleteItem(String doctorData)
+	public String deleteDoctor(String doctorData)
 	{
 		//Convert the input string to an XML document
 		Document document = Jsoup.parse(doctorData, "", Parser.xmlParser());
