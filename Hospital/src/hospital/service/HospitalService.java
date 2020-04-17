@@ -80,7 +80,7 @@ public class HospitalService {
 	
 	public String deleteHospitalDet(String hospitalData) 
 	{  
-		//Convert the input string to an XML document  
+		//Convert the input string to an XML doc  
 		Document doc = Jsoup.parse(hospitalData, "", Parser.xmlParser());     
 		
 		//Read the value from the element <itemID>  
