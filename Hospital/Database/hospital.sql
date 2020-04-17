@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2020 at 10:03 AM
+-- Generation Time: Apr 17, 2020 at 11:26 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bank`
+--
+
+CREATE TABLE `bank` (
+  `CardNumber` int(11) NOT NULL,
+  `CVV` int(11) NOT NULL,
+  `Credits` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`CardNumber`, `CVV`, `Credits`) VALUES
+(12345, 123, '5000.00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctors`
 --
 
@@ -37,6 +56,13 @@ CREATE TABLE `doctors` (
   `ArriveTime` time NOT NULL,
   `LeaveTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`DoctorID`, `HospitalName`, `DoctorName`, `Age`, `Specialization`, `ArriveTime`, `LeaveTime`) VALUES
+('D002', 'asiri', 'Jagath', 35, 'Kidney', '07:00:00', '09:00:00');
 
 -- --------------------------------------------------------
 
@@ -64,9 +90,39 @@ INSERT INTO `hospital` (`hospitalID`, `mohCode`, `hospitalName`, `emailAddress`,
 (4, 'moh1017', 'new mohotti', 'newmohotti@gmail.com', 'mr.kariyavasam', 'matara', '0413427557'),
 (5, 'moh1017', 'new mohotti', 'newmohotti@gmail.com', 'mr.kariyavasam', 'matara', '0413427557');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `PatientID` int(11) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(16) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `PhoneNo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`PatientID`, `Email`, `Username`, `Password`, `Age`, `Address`, `PhoneNo`) VALUES
+(0, 'kalana123@gmail.com', 'kalanaej', 'kalana123', 24, 'Madampe', 911),
+(1, 'admin@gmail.com', 'dilusha', 'dilusha', 25, 'Matara', 119);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`CardNumber`);
 
 --
 -- Indexes for table `doctors`
@@ -79,6 +135,12 @@ ALTER TABLE `doctors`
 --
 ALTER TABLE `hospital`
   ADD PRIMARY KEY (`hospitalID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`PatientID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
