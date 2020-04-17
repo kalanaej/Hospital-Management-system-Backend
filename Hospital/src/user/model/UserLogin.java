@@ -176,4 +176,87 @@ public class UserLogin {
 		
 		return output;
 	}
+	
+	
+	public String updateUser(String email, String username, String password, int age,  String address, int phoneNo)
+	{
+		String output = "";
+		
+		try
+		{
+			DBConnect db = new DBConnect();
+			Connection con = null;
+			con = db.connect();
+			
+			if (con == null)
+			{
+				return "Error while connecting to the database for updating.";
+			}
+			
+			// create a prepared statement
+			String query = "UPDATE users SET Email = ?, Username = ? , Password = ?, Age = ?, Address = ?, PhoneNo = ? WHERE Username = '"+username+"' and Password = '"+password+"'";
+			
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			// binding values
+			preparedStmt.setString(1, email);
+			preparedStmt.setString(2, username);
+			preparedStmt.setString(3, password);
+			preparedStmt.setInt(4, age);
+			preparedStmt.setString(5, address);
+			preparedStmt.setInt(6, phoneNo);
+			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Updated successfully";
+		}
+		catch (Exception e)
+		{
+			output = "Error while updating the user.";
+			System.err.println(e.getMessage());
+		}
+		
+		return output;
+	}
+	
+	
+	public String deleteUser(String username, String password)
+	{
+		String output = "";
+		
+		try
+		{
+			DBConnect db = new DBConnect();
+			Connection con = null;
+			con = db.connect();
+			
+			if (con == null)
+			{
+				return "Error while connecting to the database for deleting."; 
+			}
+			
+			// create a prepared statement
+			String query = "delete from users where Username = ? and Password = ?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			// binding values
+			preparedStmt.setString(1, username);
+			preparedStmt.setString(2, password);
+			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+			
+			output = "Deleted successfully";
+		}
+		catch (Exception e)
+		{
+			output = "Error while deleting the user.";
+			System.err.println(e.getMessage());
+		}
+		
+		return output;
+	}
 }
