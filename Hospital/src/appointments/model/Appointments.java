@@ -11,8 +11,11 @@ import dbconnector.DBConnect;
 public class Appointments {
 
 	public String insertAppointments(String uname, String dname, String hname, String mdate, String ptype) {
+
 		String output = "";
+
 		try {
+			
 			DBConnect db = new DBConnect();
 			Connection con = null;
 			con = db.connect();
@@ -45,6 +48,7 @@ public class Appointments {
 		}
 		return output;
 	}
+	
 
 	public String readAppointments() {
 		String output = "";
@@ -97,6 +101,7 @@ public class Appointments {
 		return output;
 	}
 
+	
 	public String updateAppointments(String tnumber, String uname, String dname, String hname, String mdate,
 			String ptype) {
 
@@ -134,6 +139,7 @@ public class Appointments {
 		return output;
 	}
 
+	
 	public String deleteAppointments(String tnumber) {
 
 		String output = "";
