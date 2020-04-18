@@ -23,6 +23,15 @@ public class Hospital {
 			{
 				return "Error while connecting to the database for inserting.";
 			} 
+			
+			
+				if(MOHcode.isEmpty() || Hos_name.isEmpty() || Hos_email.isEmpty() || Hos_managername.isEmpty() || Hos_address.isEmpty() || Hos_phoneNumber.isEmpty())
+				{
+					output = "not inserted.pls fill empty field!!!!!";
+					
+				}else {	
+			
+			
 	 
 			// create a prepared statement    
 			String query = " insert into hospital "
@@ -48,6 +57,7 @@ public class Hospital {
 			output = "Inserted successfully"; 
 			
 		  }
+		}
 		  catch (Exception e)   
 		  {    
 			  output = "Error while inserting the hospital details.";    
@@ -149,6 +159,12 @@ public class Hospital {
 		{
 			return "Error while connecting to the database for updating."; 
 		} 
+		
+			if(MOHcode.isEmpty() || Hos_name.isEmpty() || Hos_email.isEmpty() || Hos_managername.isEmpty() || Hos_address.isEmpty() || Hos_phoneNumber.isEmpty())
+			{
+				output = "not inserted.pls fill empty field!!!!!";
+			
+			}else {
 	 
 		// create a prepared statement    
 		String query = "UPDATE hospital SET mohCode=?,hospitalName=?,emailAddress=?,managerName=?,address=?,telephoneNo=?      WHERE hospitalID=?"; 
@@ -171,6 +187,7 @@ public class Hospital {
 		output = "Updated successfully";   
 	   
 		}   
+		}
 		catch (Exception e)  
 		{    
 			output = "Error while updating the hospital details.";    
